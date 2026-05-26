@@ -1,13 +1,13 @@
 # sales-analytics-dashboard
 Interactive Sales Analytics Dashboard analyzing 9,994 real Superstore transactions with KPI metrics, regional insights and profit analysis using Python and Plotly
-# 📊 Sales Analytics Dashboard
+#  Sales Analytics Dashboard
 
-## 📌 Project Overview
+##  Project Overview
 Interactive Sales Analytics Dashboard built using 
 real Superstore dataset analyzing 9,994 transactions 
 with business insights and KPI metrics.
 
-## 🛠️ Technologies Used
+##  Technologies Used
 - Python
 - Pandas
 - Streamlit
