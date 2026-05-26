@@ -3,15 +3,15 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 
-# ---------------- PAGE CONFIG ----------------
-st.set_page_config(page_title="Portfolio Dashboard", page_icon="📊", layout="wide")
 
-# ---------------- TITLE ----------------
-st.title("📊 Data Analytics Portfolio Dashboard")
+st.set_page_config(page_title="Portfolio Dashboard", layout="wide")
+
+
+st.title("Data Analytics Portfolio Dashboard")
 st.subheader("Superstore Sales Analysis (Synthetic Data)")
 st.markdown("---")
 
-# ---------------- SAMPLE DATA ----------------
+
 @st.cache_data
 def load_data():
     np.random.seed(42)
@@ -36,8 +36,8 @@ def load_data():
 
 df = load_data()
 
-# ---------------- SIDEBAR FILTERS ----------------
-st.sidebar.header("🎛️ Filters")
+
+st.sidebar.header("Filters")
 
 category = st.sidebar.multiselect("Category", df["Category"].unique(), df["Category"].unique())
 region = st.sidebar.multiselect("Region", df["Region"].unique(), df["Region"].unique())
@@ -49,20 +49,20 @@ filtered = df[
     (df["Segment"].isin(segment))
 ]
 
-# ---------------- KPI CARDS ----------------
-st.markdown("## 📌 Key Metrics")
+
+st.markdown("##  Key Metrics")
 
 c1, c2, c3, c4 = st.columns(4)
 
-c1.metric("💰 Sales", f"${filtered['Sales'].sum():,.0f}")
-c2.metric("📈 Profit", f"${filtered['Profit'].sum():,.0f}")
-c3.metric("📦 Orders", len(filtered))
-c4.metric("💹 Avg Margin", f"{filtered['Profit_Margin'].mean():.1f}%")
+c1.metric(" Sales", f"${filtered['Sales'].sum():,.0f}")
+c2.metric(" Profit", f"${filtered['Profit'].sum():,.0f}")
+c3.metric(" Orders", len(filtered))
+c4.metric(" Avg Margin", f"{filtered['Profit_Margin'].mean():.1f}%")
 
 st.markdown("---")
 
-# ---------------- CHARTS ----------------
-st.markdown("## 📊 Sales Overview")
+
+st.markdown("##  Sales Overview")
 
 c1, c2 = st.columns(2)
 
@@ -85,8 +85,8 @@ with c2:
     )
     st.plotly_chart(fig, use_container_width=True)
 
-# ---------------- DEEP ANALYSIS ----------------
-st.markdown("## 📊 Deep Analysis")
+
+st.markdown("##  Deep Analysis")
 
 c1, c2 = st.columns(2)
 
@@ -110,9 +110,8 @@ with c2:
         title="Sales vs Profit Relationship"
     )
     st.plotly_chart(fig, use_container_width=True)
-
-# ---------------- HEATMAP ----------------
-st.markdown("## 🌡️ Profit Heatmap")
+    
+st.markdown("##  Profit Heatmap")
 
 heatmap = filtered.pivot_table(
     values="Profit",
@@ -124,6 +123,5 @@ heatmap = filtered.pivot_table(
 fig = px.imshow(heatmap, text_auto=True, title="Category vs Region Profit")
 st.plotly_chart(fig, use_container_width=True)
 
-# ---------------- RAW DATA ----------------
-st.markdown("## 📋 Data Preview")
+st.markdown("## Data Preview")
 st.dataframe(filtered.head(100), use_container_width=True)
