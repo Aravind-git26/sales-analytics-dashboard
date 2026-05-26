@@ -35,7 +35,7 @@ pip install -r requirements.txt
 streamlit run app.py
 
 ##  Live Demo
-[Click Here](your-streamlit-url)
+[Click Here](https://sales-analytics-dashboard-ntnwp6rsisntr2yeapz7vr.streamlit.app/)
 
 ##  Dataset
 Superstore Sales Dataset — 9,994 records
